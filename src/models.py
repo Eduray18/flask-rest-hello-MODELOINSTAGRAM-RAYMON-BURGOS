@@ -6,7 +6,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 db = SQLAlchemy()
 
-# TABLA QUE TE FALTA: Follower (Muchos a Muchos)
+
 
 
 class Follower(db.Model):
@@ -27,7 +27,7 @@ class User(db.Model):
         String(120), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(String(80), nullable=False)
 
-    # Esto dibuja las líneas en el diagrama
+    
     posts = relationship("Post", backref="user")
     comments = relationship("Comment", backref="user")
 
@@ -61,7 +61,7 @@ class Media(db.Model):
         Integer, ForeignKey('post.id'), nullable=False)
 
 
-# CÓDIGO PARA GENERAR EL DIAGRAMA
+# GENERAR  DIAGRAMA
 try:
     render_er(db.Model, 'diagram.png')
     print("¡Éxito! Ahora verás las flechas y la tabla Follower.")
